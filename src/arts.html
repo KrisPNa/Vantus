@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Арты</title>
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Russo One', sans-serif;
+    background-color: #222;
+    color: #fff;
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Шапка и меню */
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #6A00F4, #8E44AD);
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: rgba(42, 23, 41, 0.682);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nav-links li a.active {
+    border-bottom: 3px solid #c03cb7;
+    color: #c03cb7;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    right: 20px; /* Отодвигаем в правый угол */
+}
+
+.search-box input {
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-box button {
+    background: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+.arts {
+    padding: 50px;
+    text-align: center;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+.art {
+    position: relative;
+    width: 23%;
+    min-width: 200px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.art img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.art-actions {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+    justify-content: center;
+}
+
+.like-btn, .open-btn {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.like-btn {
+    background: #4CAF50; /* Зеленый лайк */
+}
+
+.upload-form {
+    margin-top: 30px;
+    padding: 20px;
+    background: linear-gradient(230deg, #6a00f4, #8e44ad);
+    border-radius: 10px;
+}
+.upload-form button {
+    background: #007bff;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.upload-form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+/* Окно просмотра */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: auto;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.modal-content {
+    width: auto;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+.close-modal {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #ff4747;
+    color: white;
+}
+
+.close-modal:hover {
+    background: #ff2e2e;
+}
+.arts .container {
+    margin-top: 30px;
+}
+@media (max-width: 900px) {
+    .art { width: 48%; }
+}
+@media (max-width: 600px) {
+    .art { width: 98%; }
+}
+.burger {display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;cursor:pointer;z-index:1100;margin-left:10px;}
+.burger span {display:block;width:28px;height:4px;background:#fff;margin:4px 0;border-radius:2px;transition:0.3s;}
+@media (max-width:900px){.navbar{flex-direction:column;align-items:flex-start;padding:10px 10px 0 10px;height:auto;}.menu{width:100%;flex-direction:row;justify-content:space-between;align-items:center;}.nav-links{display:none;flex-direction:column;width:100vw;background:linear-gradient(90deg,#6A00F4,#8E44AD);position:absolute;top:60px;left:0;z-index:1001;padding:10px 0;border-radius:0 0 10px 10px;box-shadow:0 8px 24px rgba(0,0,0,0.15);}.nav-links.open{display:flex;}.burger{display:flex;}.nav-links li{margin:10px 0;text-align:center;}.nav-links li a{font-size:1.2rem;padding:10px 0;display:block;}}
+@media (max-width:600px){.navbar{padding:8px 4px 0 4px;}.menu h2{font-size:1.1rem;}.burger{width:32px;height:32px;}.nav-links{font-size:1.1rem;}}
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="menu">
+            <h2>Мемуары Ванитаса</h2>
+            <div class="burger" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index1.html">Главная</a></li>
+                <li><a href="characters.html">Персонажи</a></li>
+                <li><a href="theories.html">Теории</a></li>
+                <li><a href="arts.html">Арты</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="facts.html">Интересные факты</a></li>
+                <li><a href="personal.html">Личный кабинет</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="arts">
+        <div class="container">
+            <h1></h1>
+            <div class="gallery"></div>
+            
+            <form class="upload-form">
+                <h2>Загрузите свой арт</h2>
+                <input type="file" id="upload-file" accept="image/*" required>
+                <button type="submit">Загрузить</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 VanitasNoCarte. Все права защищены.</p>
+</footer>
+
+<!-- Окно просмотра арта -->
+<div class="modal" id="art-modal" style="display:none;">
+    <span class="close-btn" id="close-art-modal" style="position:absolute;top:15px;right:20px;font-size:30px;cursor:pointer;color:white;z-index:10">&times;</span>
+    <img class="modal-content" id="modal-art-img" style="max-width:90vw;max-height:90vh;display:block;margin:auto;margin-top:80px;margin-bottom:20px;">
+</div>
+
+
+
+<script src="assets/js/app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // --- Подсветка активной ссылки ---
+    const links = document.querySelectorAll('.nav-links li a');
+    const current = window.location.pathname.split('/').pop();
+    links.forEach(link => {
+        if (link.getAttribute('href') === current) {
+            link.classList.add('active');
+        }
+    });
+
+    // --- Работа с галереей и лайками ---
+    const gallery = document.querySelector('.gallery');
+    const uploadForm = document.querySelector('.upload-form');
+    const uploadInput = document.getElementById('upload-file');
+
+    function getArts() {
+        return JSON.parse(localStorage.getItem('arts') || '[]');
+    }
+    function saveArts(arr) {
+        localStorage.setItem('arts', JSON.stringify(arr));
+    }
+    function getLikedArts() {
+        return JSON.parse(localStorage.getItem('likedArts') || '[]');
+    }
+    function saveLikedArts(arr) {
+        localStorage.setItem('likedArts', JSON.stringify(arr));
+    }
+
+    function renderArts() {
+        const arr = getArts();
+        gallery.innerHTML = '';
+        arr.forEach((art, idx) => {
+            const div = document.createElement('div');
+            div.className = 'art';
+            div.dataset.idx = idx;
+            div.innerHTML = `
+                <img src="${art.src}" alt="Арт" class="preview">
+                <div class="art-actions">
+                    <button class="like-btn">👍</button>
+                </div>
+            `;
+            gallery.appendChild(div);
+        });
+    }
+
+    // --- Инициализация: добавляем стартовые арты, если их нет ---
+    let arr;
+    try {
+        arr = JSON.parse(localStorage.getItem('arts'));
+        if (!Array.isArray(arr)) throw new Error();
+    } catch {
+        arr = null;
+    }
+    if (arr === null) {
+        arr = [
+            { src: 'assets/img/photo_2022-08-07_07-29-59.jpg' },
+            { src: 'assets/img/photo_2022-06-03_01-18-22.jpg' }
+        ];
+        saveArts(arr);
+    }
+    renderArts();
+
+    // --- Загрузка своего арта ---
+    if (uploadForm && uploadInput) {
+        uploadForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (uploadInput.files.length === 0) return;
+            const file = uploadInput.files[0];
+            const allowedTypes = ["image/png", "image/jpeg", "image/jpg", "image/gif"];
+            if (!allowedTypes.includes(file.type)) {
+                alert("Ошибка: можно загружать только изображения!");
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const arr = getArts() || [];
+                arr.push({ src: e.target.result });
+                saveArts(arr);
+                renderArts();
+            };
+            reader.readAsDataURL(file);
+            uploadInput.value = "";
+        });
+    }
+
+    // --- Лайк ---
+    gallery.addEventListener('click', function(event) {
+        if (event.target.classList.contains('like-btn')) {
+            const artDiv = event.target.closest('.art');
+            const idx = artDiv.dataset.idx;
+            const arr = getArts();
+            const liked = getLikedArts();
+            // Проверяем, не добавлен ли уже
+            const exists = liked.some(a => a.src === arr[idx].src);
+            if (!exists) {
+                liked.push(arr[idx]);
+                saveLikedArts(liked);
+            }
+            alert('Вы поставили лайк!');
+        }
+    });
+
+    // --- Открытие картинки на весь экран ---
+    const artModal = document.getElementById('art-modal');
+    const modalArtImg = document.getElementById('modal-art-img');
+    const closeArtModal = document.getElementById('close-art-modal');
+    if (gallery && artModal && modalArtImg && closeArtModal) {
+        gallery.addEventListener('click', function(event) {
+            if (event.target.classList.contains('preview')) {
+                modalArtImg.src = event.target.src;
+                artModal.style.display = 'flex';
+                artModal.style.justifyContent = 'center';
+                artModal.style.alignItems = 'center';
+                artModal.style.background = 'rgba(0,0,0,0.95)';
+            }
+        });
+        closeArtModal.addEventListener('click', function() {
+            artModal.style.display = 'none';
+            modalArtImg.src = '';
+        });
+        // Закрытие по клику вне картинки
+        artModal.addEventListener('click', function(event) {
+            if (event.target === artModal) {
+                artModal.style.display = 'none';
+                modalArtImg.src = '';
+            }
+        });
+    }
+
+    const burger = document.getElementById('burger-menu');
+    const navLinks = document.querySelector('.nav-links');
+    function checkWidth() {
+        if (window.innerWidth <= 900) {
+            burger.style.display = 'flex';
+            navLinks.classList.remove('open');
+        } else {
+            burger.style.display = 'none';
+            navLinks.classList.remove('open');
+        }
+    }
+    checkWidth();
+    window.addEventListener('resize', checkWidth);
+    burger.addEventListener('click', function() {
+        navLinks.classList.toggle('open');
+    });
+    navLinks.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A' && window.innerWidth <= 900) {
+            navLinks.classList.remove('open');
+        }
+    });
+});
+</script>
+</body>
+</html>

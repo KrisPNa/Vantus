@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VanitasNoCarte</title>
+<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+ <style>
+     * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+   }
+
+body {
+    font-family: 'Russo One', sans-serif;
+    background-color: #222;
+    color: #fff;
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Шапка и меню */
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #6A00F4, #8E44AD);
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: rgba(42, 23, 41, 0.682);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nav-links li a.active {
+    border-bottom: 3px solid #c03cb7;
+    color: #c03cb7;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    right: 20px; /* Отодвигаем в правый угол */
+}
+
+.search-box input {
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-box button {
+    background: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('../img/Group 57.png') no-repeat center/cover;
+    min-height: 1600px;
+    padding: 20px;
+}
+
+h1 {
+    color: #00ddff;
+    font-size: 3rem;
+}
+
+.content {
+    background: rgba(44, 43, 43, 0.7);
+    padding: 100px;
+    border-radius: 15px;
+}
+
+/* Картинки */
+.img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.img img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+/* Список возможностей */
+.features {
+    list-style: none;
+    font-size: 1.2rem;
+    color: #8a659e;
+}
+
+.features h2 {
+    font-size: 2rem;
+}
+
+/* Подвал */
+footer {
+    background: #111;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: static;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .img img {
+        max-width: 90vw;
+    }
+    .content {
+        padding: 30px 10px;
+    }
+    .features {
+        font-size: 1rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .features h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .img img {
+        max-width: 98vw;
+    }
+    .content {
+        padding: 10px 2px;
+    }
+    .features {
+        font-size: 0.95rem;
+    }
+    h1 {
+        font-size: 1.1rem;
+    }
+    .features h2 {
+        font-size: 1rem;
+    }
+}
+
+.registration {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+}
+
+.registration {
+    margin-top: 50px; /* Смещение вверх */
+}
+
+
+.register-card {
+    background: rgba(44, 43, 43, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.register-card h2 {
+    color: #c03cb7;
+}
+
+.register-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-card input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.register-card button {
+    background: #e94cf1;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.register-card button:hover {
+    background: #bf23b7;
+}
+.hero .container {
+    margin-top: 60px;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1100;
+  margin-left: 10px;
+}
+.burger span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background: #fff;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+.burger-veil {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 999;
+}
+@media (max-width:900px){
+  .navbar{flex-direction:column;align-items:flex-start;padding:10px 10px 0 10px;height:auto;}
+  .menu{width:100%;flex-direction:row;justify-content:space-between;align-items:center;}
+  .nav-links{display:none;flex-direction:column;width:100vw;background:linear-gradient(90deg,#6A00F4,#8E44AD);position:absolute;top:60px;left:0;z-index:1001;padding:10px 0;border-radius:0 0 10px 10px;box-shadow:0 8px 24px rgba(0,0,0,0.15);}
+  .nav-links.open{display:flex;}
+  .burger{display:flex;}
+  .nav-links li{margin:10px 0;text-align:center;}
+  .nav-links li a{font-size:1.2rem;padding:10px 0;display:block;}
+  .burger-veil.active{display:block;}
+}
+    </style>
+</head>
+
+<body>
+
+    <header>
+    <nav class="navbar">
+        <div class="menu">
+            <h2>Мемуары Ванитаса</h2>
+            <div class="burger" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index1.html">Главная</a></li>
+                <li><a href="characters.html">Персонажи</a></li>
+                <li><a href="theories.html">Теории</a></li>
+                <li><a href="arts.html">Арты</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="facts.html">Интересные факты</a></li>
+                <li><a href="personal.html">Личный кабинет</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="burger-veil" id="burger-veil"></div>
+
+    <main>
+        <section class="hero">
+            <!-- <div class="gallery">
+            <img src="assets/img/Group 57.png" alt="Фон">
+
+        </div> -->
+
+            <div class="container">
+                
+                <div class="content">
+                    <h1>Добро пожаловать в фандом МВ!</h1>
+                    <figure class="img">
+                        <img src="assets/img/Wisparik_vanitas_poka_poka.jpg" alt="Ванитас">
+                    </figure>
+                    <ul class="features">
+                        <h2>Здесь вы сможете найти:</h2>
+                        <li>1.Интересные факты и информация о персонажах.</li>
+                        <li>2.Теории и догадки.</li>
+                        <li>3.Обсуждение и отзывы.</li>
+                        <li>4.Галерея артов от любимых авторов.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+       <section class="registration">
+            <div class="register-card">
+                <h2>Регистрация</h2>
+                <form id="register-form">
+                    <label for="username">Имя пользователя</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="submit">Зарегистрироваться</button>
+                    <button id="login-btn">Вход</button> 
+                </form>
+            </div>
+        </section>
+
+
+
+       
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 VanitasNoCarte. Все права защищены.</p>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const links = document.querySelectorAll('.nav-links li a');
+        const current = window.location.pathname.split('/').pop();
+        links.forEach(link => {
+            if (link.getAttribute('href') === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Бургер-меню для мобильной навигации
+    const burger = document.getElementById('burger-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const burgerVeil = document.getElementById('burger-veil');
+
+    function checkWidth() {
+      if (window.innerWidth <= 900) {
+        burger.style.display = 'flex';
+        navLinks.classList.remove('open');
+        burgerVeil.classList.remove('active');
+      } else {
+        burger.style.display = 'none';
+        navLinks.classList.remove('open');
+        burgerVeil.classList.remove('active');
+      }
+    }
+
+    checkWidth();
+    window.addEventListener('resize', checkWidth);
+
+    burger.addEventListener('click', function() {
+      navLinks.classList.toggle('open');
+      burgerVeil.classList.toggle('active');
+    });
+
+    burgerVeil.addEventListener('click', function() {
+      navLinks.classList.remove('open');
+      burgerVeil.classList.remove('active');
+    });
+
+    navLinks.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' && window.innerWidth <= 900) {
+        navLinks.classList.remove('open');
+        burgerVeil.classList.remove('active');
+      }
+    });
+    </script>
+</body>
+
+</html>

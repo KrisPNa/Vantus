@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интересные факты</title>
+   <!-- < link rel="stylesheet" href="assets/css/style.css"> -->
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Russo One', sans-serif;
+    background-color: #222;
+    color: #fff;
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Шапка и меню */
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #6A00F4, #8E44AD);
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: rgba(42, 23, 41, 0.682);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nav-links li a.active {
+    border-bottom: 3px solid #c03cb7;
+    color: #c03cb7;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    right: 20px; /* Отодвигаем в правый угол */
+}
+
+.search-box input {
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-box button {
+    background: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+.facts {
+    padding: 50px;
+    text-align: center;
+}
+
+.facts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.fact {
+    background: rgba(44, 43, 43, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.like-btn {
+    background: #4CAF50; /* Зеленый лайк */
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.fact-form {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.fact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.fact-form button {
+    background: #007BFF;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.facts .container {
+    margin-top: 30px;
+}
+.burger {display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;cursor:pointer;z-index:1100;margin-left:10px;}
+.burger span {display:block;width:28px;height:4px;background:#fff;margin:4px 0;border-radius:2px;transition:0.3s;}
+@media (max-width:900px){.navbar{flex-direction:column;align-items:flex-start;padding:10px 10px 0 10px;height:auto;}.menu{width:100%;flex-direction:row;justify-content:space-between;align-items:center;}.nav-links{display:none;flex-direction:column;width:100vw;background:linear-gradient(90deg,#6A00F4,#8E44AD);position:absolute;top:60px;left:0;z-index:1001;padding:10px 0;border-radius:0 0 10px 10px;box-shadow:0 8px 24px rgba(0,0,0,0.15);}.nav-links.open{display:flex;}.burger{display:flex;}.nav-links li{margin:10px 0;text-align:center;}.nav-links li a{font-size:1.2rem;padding:10px 0;display:block;}}
+@media (max-width:600px){.navbar{padding:8px 4px 0 4px;}.menu h2{font-size:1.1rem;}.burger{width:32px;height:32px;}.nav-links{font-size:1.1rem;}.search-box{width:120px;margin-left:-20px;}.search-box input{width:80px;font-size:0.8rem;}}
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="menu">
+            <h2>Мемуары Ванитаса</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Поиск...">
+                <button type="submit">🔍</button>
+            </div>
+            <div class="burger" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index1.html">Главная</a></li>
+                <li><a href="characters.html">Персонажи</a></li>
+                <li><a href="theories.html">Теории</a></li>
+                <li><a href="arts.html">Арты</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="facts.html">Интересные факты</a></li>
+                <li><a href="personal.html">Личный кабинет</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="facts">
+        <div class="container">
+            <h1></h1>
+            <div class="facts-list"></div>
+
+            <form class="fact-form">
+                <h2>Добавьте новый факт</h2>
+                <label for="fact-text">Текст факта:</label>
+                <textarea id="fact-text" name="fact-text" rows="3" required></textarea>
+
+                <button type="submit">Добавить факт</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 VanitasNoCarte. Все права защищены.</p>
+</footer>
+
+<script src="assets/js/app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Подсветка активной ссылки
+    const links = document.querySelectorAll('.nav-links li a');
+    const current = window.location.pathname.split('/').pop();
+    links.forEach(link => {
+        if (link.getAttribute('href') === current) {
+            link.classList.add('active');
+        }
+    });
+
+    // --- Работа с фактами ---
+    const factsList = document.querySelector('.facts-list');
+    const factForm = document.querySelector('.fact-form');
+
+    function getFacts() {
+        const facts = localStorage.getItem('facts');
+        return facts ? JSON.parse(facts) : [];
+    }
+    
+    function saveFacts(arr) {
+        localStorage.setItem('facts', JSON.stringify(arr));
+    }
+    
+    function getLikedFacts() {
+        const liked = localStorage.getItem('likedFacts');
+        return liked ? JSON.parse(liked) : [];
+    }
+    
+    function saveLikedFacts(arr) {
+        localStorage.setItem('likedFacts', JSON.stringify(arr));
+    }
+    
+    function renderFacts() {
+        const arr = getFacts();
+        factsList.innerHTML = '';
+        arr.forEach(fact => {
+            const div = document.createElement('div');
+            div.className = 'fact';
+            div.innerHTML = `
+                <p>${fact.text}</p>
+                <button class="like-btn">👍</button>
+            `;
+            factsList.appendChild(div);
+        });
+    }
+
+    // Инициализация: загружаем факты при загрузке страницы
+    if (!localStorage.getItem('facts')) {
+        const initialFacts = [
+            { text: 'Автор манги вдохновлялся средневековыми легендами.' },
+            { text: 'У некоторых персонажей есть скрытые символы, отсылающие к историческим событиям.' }
+        ];
+        saveFacts(initialFacts);
+    }
+    renderFacts();
+
+    // --- Добавление нового факта ---
+    if (factForm) {
+        factForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const text = event.target.elements['fact-text'].value.trim();
+            if (!text) {
+                alert('Введите текст факта!');
+                return false; // Прерываем выполнение
+            }
+            const arr = getFacts();
+            arr.push({ text });
+            saveFacts(arr);
+            renderFacts();
+            event.target.elements['fact-text'].value = '';
+            return false;
+        });
+    }
+
+    // Поиск по фактам
+    const searchInput = document.querySelector('.search-box input');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const value = this.value.trim().toLowerCase();
+            const factCards = document.querySelectorAll('.facts-list .fact');
+            factCards.forEach(card => {
+                const text = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
+                card.style.display = text.includes(value) ? '' : 'none';
+            });
+        });
+    }
+
+    // --- Лайк факта ---
+    if (factsList) {
+        factsList.addEventListener('click', function(event) {
+            if (event.target.classList.contains('like-btn')) {
+                const factDiv = event.target.closest('.fact');
+                const text = factDiv.querySelector('p') ? factDiv.querySelector('p').textContent : '';
+                const liked = getLikedFacts();
+                
+                if (!liked.some(f => f.text === text)) {
+                    liked.push({ text });
+                    saveLikedFacts(liked);
+                    alert('Вы поставили лайк!');
+                }
+            }
+        });
+    }
+
+    // Бургер-меню
+    const burger = document.getElementById('burger-menu');
+    const navLinks = document.querySelector('.nav-links');
+    
+    function checkWidth() {
+        if (window.innerWidth <= 900) {
+            burger.style.display = 'flex';
+            navLinks.classList.remove('open');
+        } else {
+            burger.style.display = 'none';
+            navLinks.classList.remove('open');
+        }
+    }
+    
+    checkWidth();
+    window.addEventListener('resize', checkWidth);
+    
+    if (burger) {
+        burger.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+        });
+    }
+    
+    if (navLinks) {
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && window.innerWidth <= 900) {
+                navLinks.classList.remove('open');
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>

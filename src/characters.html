@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персонажи</title>
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Russo One', sans-serif;
+    background-color: #222;
+    color: #fff;
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Шапка и меню */
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #6A00F4, #8E44AD);
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: rgba(42, 23, 41, 0.682);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nav-links li a.active {
+    border-bottom: 3px solid #c03cb7;
+    color: #c03cb7;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    right: 20px; /* Отодвигаем в правый угол */
+}
+
+.search-box input {
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-box button {
+    background: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+        .characters {
+    padding: 50px;
+    text-align: center;
+}
+
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.character {
+    background: rgba(44, 43, 43, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    width: 250px;
+}
+
+.character img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.characters .container {
+    margin-top: 30px;
+}
+
+.burger {display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;cursor:pointer;z-index:1100;margin-left:10px;}
+.burger span {display:block;width:28px;height:4px;background:#fff;margin:4px 0;border-radius:2px;transition:0.3s;}
+@media (max-width:900px){.navbar{flex-direction:column;align-items:flex-start;padding:10px 10px 0 10px;height:auto;}.menu{width:100%;flex-direction:row;justify-content:space-between;align-items:center;}.nav-links{display:none;flex-direction:column;width:100vw;background:linear-gradient(90deg,#6A00F4,#8E44AD);position:absolute;top:60px;left:0;z-index:1001;padding:10px 0;border-radius:0 0 10px 10px;box-shadow:0 8px 24px rgba(0,0,0,0.15);}.nav-links.open{display:flex;}.burger{display:flex;}.nav-links li{margin:10px 0;text-align:center;}.nav-links li a{font-size:1.2rem;padding:10px 0;display:block;}}
+@media (max-width:600px){.navbar{padding:8px 4px 0 4px;}.menu h2{font-size:1.1rem;}.burger{width:32px;height:32px;}.nav-links{font-size:1.1rem;}.search-box{width:120px;margin-left:-20px;}.search-box input{width:80px;font-size:0.8rem;}}
+</style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="menu">
+                <h2>Мемуары Ванитаса</h2>
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="burger" id="burger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index1.html">Главная</a></li>
+                    <li><a href="characters.html">Персонажи</a></li>
+                    <li><a href="theories.html">Теории</a></li>
+                    <li><a href="arts.html">Арты</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="facts.html">Интересные факты</a></li>
+                    <li><a href="personal.html">Личный кабинет</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="characters">
+            <div class="container">
+                <h1></h1>
+                <div class="character-list">
+                    <div class="character">
+                        <a href="vanitas.html">
+                            <img src="assets/img/ванитвс.jpg" alt="Ванитас">
+                            <h3>Ванитас</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="noe.html">
+                            <img src="assets/img/ной.jpg" alt="Ной Архивист">
+                            <h3>Ной</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="jeanne.html">
+                            <img src="assets/img/жанна.jpg" alt="Жанна">
+                            <h3>Жанна</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="astolfo.html">
+                            <img src="assets/img/аст.jpg" alt="Астольфо Гранат">
+                            <h3>Астольфо</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="roland.html">
+                            <img src="assets/img/роналд.jpg" alt="Роланд Фортис">
+                            <h3>Роланд</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="amelia.html">
+                            <img src="assets/img/амас.jpg" alt="Амелия Рут">
+                            <h3>Амелия</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="misha.html">
+                            <img src="assets/img/миша.jpg" alt="Михаил">
+                            <h3>Михаил</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="louis.html">
+                            <img src="assets/img/луи.jpg" alt="Луи де Сад">
+                            <h3>Луи</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="chloe.html">
+                            <img src="assets/img/хлоя.jpg" alt="Хлоя д'Апшье">
+                            <h3>Хлоя</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="rutven.html">
+                            <img src="assets/img/рутвен.jpg" alt="Рутвен Август">
+                            <h3>Рутвен</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="domi.html">
+                            <img src="assets/img/доми.jpg" alt="Доминик де Сад">
+                            <h3>Доминик</h3>
+                        </a>
+                    </div>
+
+                    <div class="character">
+                        <a href="charles.html">
+                            <img src="assets/img/шарл.jpg" alt="Шарлатан">
+                            <h3>Шарлатан</h3>
+                        </a>
+                    </div>
+                    <div class="character">
+                        <a href="blank.html">
+                            <img src="assets/img/бкзеб.jpg" alt="Безликий">
+                            <h3>Безликий</h3>
+                        </a>
+                    </div>
+                    <div class="character">
+                        <a href="veronica.html">
+                            <img src="assets/img/вер.jpg" alt="Вероника Де Сад">
+                            <h3>Вероника</h3>
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 VanitasNoCarte. Все права защищены.</p>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Подсветка активной ссылки
+            const links = document.querySelectorAll('.nav-links li a');
+            const current = window.location.pathname.split('/').pop();
+            links.forEach(link => {
+                if (link.getAttribute('href') === current) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Поиск по персонажам
+            const searchInput = document.querySelector('.search-box input');
+            const characterCards = document.querySelectorAll('.character-list .character');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const value = this.value.trim().toLowerCase();
+                    characterCards.forEach(card => {
+                        const name = card.querySelector('h3').textContent.toLowerCase();
+                        if (name.includes(value)) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+
+        // Бургер-меню для мобильной навигации
+        const burger = document.getElementById('burger-menu');
+        const navLinks = document.querySelector('.nav-links');
+        function checkWidth() {
+            if (window.innerWidth <= 900) {
+                burger.style.display = 'flex';
+                navLinks.classList.remove('open');
+            } else {
+                burger.style.display = 'none';
+                navLinks.classList.remove('open');
+            }
+        }
+        checkWidth();
+        window.addEventListener('resize', checkWidth);
+        burger.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+        });
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && window.innerWidth <= 900) {
+                navLinks.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,653 @@
+@use 'vars';
+@use 'mixins';
+
+
+
+/* Общие стили */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Russo One', sans-serif;
+    background-color: #222;
+    color: #fff;
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Шапка и меню */
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #6A00F4, #8E44AD);
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: rgba(42, 23, 41, 0.682);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    right: 20px; /* Отодвигаем в правый угол */
+}
+
+.search-box input {
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-box button {
+    background: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+/* Главный блок */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('../img/Group 57.png') no-repeat center/cover;
+    min-height: 1600px;
+    padding: 20px;
+}
+
+h1 {
+    color: #00ddff;
+    font-size: 2rem;
+}
+
+.content {
+    background: rgba(44, 43, 43, 0.7);
+    padding: 100px;
+    border-radius: 15px;
+}
+
+/* Картинки */
+.img {
+    display: flex;
+    justify-content: center;
+}
+
+.img img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Список возможностей */
+.features {
+    list-style: none;
+    font-size: 1.2rem;
+    color: #8a659e;
+}
+
+/* Подвал */
+footer {
+    background: #111;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: static;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+.registration {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+}
+
+.registration {
+    margin-top: 50px; /* Смещение вверх */
+}
+
+
+.register-card {
+    background: rgba(44, 43, 43, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.register-card h2 {
+    color: #c03cb7;
+}
+
+.register-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-card input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.register-card button {
+    background: #e94cf1;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.register-card button:hover {
+    background: #bf23b7;
+}
+
+.reviews {
+    padding: 50px;
+    text-align: center;
+}
+
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review {
+    background: rgba(44, 43, 43, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.review h3 {
+    color: #00aaff;
+}
+
+.review-form {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(234, 105, 227, 0.9);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.review-form input,
+.review-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.review-form button {
+    background: #c369f7;
+    color: rgb(106, 20, 101);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.review-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.review-actions button {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.like-btn {
+    background: #4CAF50; /* Зеленый для лайков */
+    color: white;
+}
+
+.dislike-btn {
+    background: #F44336; /* Красный для дизлайков */
+    color: white;
+}
+
+.report-btn {
+    background: #FF9800; /* Оранжевый для жалоб */
+    color: white;
+}
+
+.review-actions button:hover {
+    opacity: 0.8;
+}
+.arts {
+    padding: 50px;
+    text-align: center;
+}
+
+.gallery {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.art {
+    position: relative;
+}
+
+.art img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.art-actions {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+    justify-content: center;
+}
+
+.like-btn, .open-btn {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.like-btn {
+    background: #4CAF50; /* Зеленый лайк */
+}
+
+
+
+.upload-form {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+}
+
+/* Окно просмотра */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: auto;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.modal-content {
+    width: auto;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+.close-modal {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #ff4747;
+    color: white;
+}
+
+.close-modal:hover {
+    background: #ff2e2e;
+}
+.theories {
+    padding: 50px;
+    text-align: center;
+}
+
+.theory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.theory {
+    background: rgba(44, 43, 43, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    max-width: 600px;
+    text-align: left;
+}
+
+.theory img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.theory-form {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.theory-form input,
+.theory-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.theory-form button {
+    background: #007BFF;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.facts {
+    padding: 50px;
+    text-align: center;
+}
+
+.facts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.fact {
+    background: rgba(44, 43, 43, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.like-btn {
+    background: #4CAF50; /* Зеленый лайк */
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.fact-form {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.fact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.fact-form button {
+    background: #007BFF;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.characters {
+    padding: 50px;
+    text-align: center;
+}
+
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.character {
+    background: rgba(44, 43, 43, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    width: 250px;
+}
+
+.character img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.profile {
+    padding: 40px;
+    background: rgba(44, 43, 43, 0.8);
+    border-radius: 10px;
+    text-align: center;
+
+    &-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+
+        .avatar-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &-body {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .profile-section {
+            background: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .art-gallery img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+        }
+    }
+}
+
+// --- Адаптивный header ---
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 10px 0 10px;
+    height: auto;
+    position: fixed;
+  }
+  .menu {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(90deg, #6A00F4, #8E44AD);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 1001;
+    padding: 10px 0;
+    border-radius: 0 0 10px 10px;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 1100;
+    margin-left: 10px;
+  }
+  .burger span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: #fff;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  .search-box {
+    position: static;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 600px) {
+  .navbar {
+    padding: 8px 4px 0 4px;
+  }
+  .menu h2 {
+    font-size: 1.1rem;
+  }
+  .burger {
+    width: 32px;
+    height: 32px;
+  }
+  .nav-links {
+    font-size: 1.1rem;
+  }
+}
