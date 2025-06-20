@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (!currentUser) {
         alert("Вам нужно зарегистрироваться!");
-        window.location.href = "index.html";
+        window.location.href = "index1.html";
         return;
     }
 
