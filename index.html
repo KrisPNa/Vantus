@@ -340,7 +340,7 @@ footer {
                 <h2>Регистрация</h2>
                 <form id="register-form">
                     <label for="username">Имя пользователя</label>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="username" name="username" maxlength="30" pattern="^[^\s].*[^\s]$|^[^\s]$" title="Имя не может начинаться или заканчиваться пробелом" required>
 
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
@@ -348,7 +348,7 @@ footer {
                     <label for="password">Пароль</label>
                     <input type="password" id="password" name="password" 
                            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$" 
-                           title="Пароль должен содержать минимум 8 символов, максимум 20, включая буквы и цифры" 
+                           title="Пароль должен содержать минимум 8 символов, максимум 20, включая буквы и цифры. Пробелы не допускаются." 
                            required>
 
                     <button type="submit">Зарегистрироваться</button>
