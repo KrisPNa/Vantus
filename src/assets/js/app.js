@@ -1,4 +1,74 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // --- Валидация поля имени пользователя ---
+    const usernameInput = document.getElementById("username");
+    if (usernameInput) {
+        usernameInput.addEventListener("input", function(e) {
+            let value = this.value;
+            
+            // Удаляем пробелы в начале
+            if (value.startsWith(" ")) {
+                value = value.replace(/^\s+/, "");
+            }
+            
+            // Заменяем множественные пробелы на один
+            value = value.replace(/\s+/g, " ");
+            
+            // Ограничиваем длину до 30 символов
+            if (value.length > 30) {
+                value = value.substring(0, 30);
+            }
+            
+            // Обновляем значение поля
+            this.value = value;
+        });
+        
+        // Предотвращаем вставку текста с пробелами в начале
+        usernameInput.addEventListener("paste", function(e) {
+            e.preventDefault();
+            let pastedText = (e.clipboardData || window.clipboardData).getData("text");
+            
+            // Удаляем пробелы в начале
+            pastedText = pastedText.replace(/^\s+/, "");
+            
+            // Заменяем множественные пробелы на один
+            pastedText = pastedText.replace(/\s+/g, " ");
+            
+            // Ограничиваем длину
+            if (pastedText.length > 30) {
+                pastedText = pastedText.substring(0, 30);
+            }
+            
+            // Вставляем очищенный текст
+            document.execCommand("insertText", false, pastedText);
+        });
+    }
+
+    // --- Валидация поля пароля ---
+    const passwordInput = document.getElementById("password");
+    if (passwordInput) {
+        passwordInput.addEventListener("input", function(e) {
+            let value = this.value;
+            
+            // Удаляем все пробелы из пароля
+            value = value.replace(/\s/g, "");
+            
+            // Обновляем значение поля
+            this.value = value;
+        });
+        
+        // Предотвращаем вставку текста с пробелами
+        passwordInput.addEventListener("paste", function(e) {
+            e.preventDefault();
+            let pastedText = (e.clipboardData || window.clipboardData).getData("text");
+            
+            // Удаляем все пробелы из вставленного текста
+            pastedText = pastedText.replace(/\s/g, "");
+            
+            // Вставляем очищенный текст
+            document.execCommand("insertText", false, pastedText);
+        });
+    }
+
     // --- Регистрация и вход ---
     const registerForm = document.getElementById("register-form");
     const loginBtn = document.getElementById("login-btn");
