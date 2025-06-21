@@ -280,6 +280,11 @@
       <p>&copy; 2025 VanitasNoCarte. Все права защищены.</p>
     </footer>
 
+    <!-- Индикатор загрузки -->
+    <div id="loading-indicator" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: white; padding: 20px; border-radius: 10px; z-index: 2000;">
+      Загрузка изображения...
+    </div>
+
     <script src="assets/js/app.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -360,10 +365,12 @@
             const title = document.getElementById("title").value.trim();
             const content = document.getElementById("content").value.trim();
             const imageInput = document.getElementById("image");
+            
             if (!title || !content) {
               alert("Заполните все поля!");
               return;
             }
+            
             const saveTheory = (imgData) => {
               const newTheory = { title, content, image: imgData };
               let arr = null;
@@ -377,17 +384,88 @@
               localStorage.setItem("theories", JSON.stringify(arr));
               theoryList.appendChild(createTheoryHTML(newTheory));
               theoryForm.reset();
+              
+              // Скрываем индикатор загрузки
+              const loadingIndicator = document.getElementById("loading-indicator");
+              if (loadingIndicator) {
+                loadingIndicator.style.display = "none";
+              }
+              
+              alert("Теория успешно опубликована!");
             };
-            if (imageInput.files && imageInput.files[0]) {
+            
+            // Проверяем, есть ли файл
+            if (imageInput.files && imageInput.files.length > 0) {
+              const file = imageInput.files[0];
+              
+              // Проверяем тип файла
+              if (!file.type.startsWith('image/')) {
+                alert("Пожалуйста, выберите изображение!");
+                return;
+              }
+              
+              // Проверяем размер файла (максимум 5MB)
+              const maxSize = 5 * 1024 * 1024; // 5MB в байтах
+              if (file.size > maxSize) {
+                alert("Размер изображения слишком большой! Максимальный размер: 5MB");
+                return;
+              }
+              
               const reader = new FileReader();
+              
               reader.onload = function (e) {
+                console.log("Файл успешно прочитан");
                 saveTheory(e.target.result);
               };
-              reader.onerror = function () {
-                saveTheory(""); // если ошибка чтения файла
+              
+              reader.onerror = function (error) {
+                console.error("Ошибка чтения файла:", error);
+                
+                // Скрываем индикатор загрузки
+                const loadingIndicator = document.getElementById("loading-indicator");
+                if (loadingIndicator) {
+                  loadingIndicator.style.display = "none";
+                }
+                
+                alert("Ошибка при загрузке изображения. Теория будет сохранена без изображения.");
+                saveTheory("");
               };
-              reader.readAsDataURL(imageInput.files[0]);
+              
+              reader.onabort = function () {
+                console.log("Чтение файла прервано");
+                
+                // Скрываем индикатор загрузки
+                const loadingIndicator = document.getElementById("loading-indicator");
+                if (loadingIndicator) {
+                  loadingIndicator.style.display = "none";
+                }
+                
+                alert("Загрузка изображения прервана. Теория будет сохранена без изображения.");
+                saveTheory("");
+              };
+              
+              try {
+                reader.readAsDataURL(file);
+                
+                // Показываем индикатор загрузки
+                const loadingIndicator = document.getElementById("loading-indicator");
+                if (loadingIndicator) {
+                  loadingIndicator.style.display = "block";
+                }
+              } catch (error) {
+                console.error("Ошибка при запуске FileReader:", error);
+                
+                // Скрываем индикатор загрузки
+                const loadingIndicator = document.getElementById("loading-indicator");
+                if (loadingIndicator) {
+                  loadingIndicator.style.display = "none";
+                }
+                
+                alert("Ошибка при обработке изображения. Теория будет сохранена без изображения.");
+                saveTheory("");
+              }
             } else {
+              // Нет изображения
               saveTheory("");
             }
           });
